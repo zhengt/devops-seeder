@@ -47,23 +47,25 @@ void createJobs(def baseFolder, def devBaseFolder, def jobConfig) {
     // create repo folder
     createFolder("${baseFolder}/${project}/${repositoryNameSlug}", jobConfig.repository)
 
-    createJob("UnitTest", "master", "buildTest", jobConfig, baseFolder)
-    createJob("APITest", "master", "apiTest", jobConfig, baseFolder)
-    createJob("UITest", "master", "uiTest", jobConfig, baseFolder)
-    createJob("IntegrationTest", "master", "integrationTest", jobConfig, baseFolder)
-    createJob("PackageToNexus", "master", "publish", jobConfig, baseFolder)
-    createJob("UnitTestPR", "pr", "buildTest", jobConfig, baseFolder)
+    createJob("API-Smoke-Test", "master", "apiSmokeTest", jobConfig, baseFolder)
+    createJob("API-Integration-Test", "master", "apiIntegrationTest", jobConfig, baseFolder)
+    createJob("API-Regression-Test", "master", "apiRegressionTest", jobConfig, baseFolder)
 
+    createJob("Performance-Test", "master", "performanceTest", jobConfig, baseFolder)
+
+    createJob("UI-Smoke-Test", "master", "uiSmokeTest", jobConfig, baseFolder)
+    createJob("UI-Integration-Test", "master", "uiIntegrationTest", jobConfig, baseFolder)
+    createJob("UI-Regression-Test", "master", "uiRegressionTest", jobConfig, baseFolder)
+
+    createJob("UnitTest", "master", "buildTest", jobConfig, baseFolder)
     createJob("Sonarqube", "master" ,"sonarqube", jobConfig, baseFolder)
     createJob("Veracode", "master" ,"veracode", jobConfig, baseFolder)
     createJob("SonatypeIQ", "master" ,"sonatypeIQ", jobConfig, baseFolder)
+    createJob("PackageToNexus", "master", "publish", jobConfig, baseFolder)
 
+    createJob("UnitTestPR", "pr", "buildTest", jobConfig, baseFolder)
     createJob("SonarqubePR", "pr", "sonarqube", jobConfig, baseFolder)
     createJob("SonatypeIQPR", "pr", "sonatypeIQ", jobConfig, baseFolder)
-
-    createJob("SOATest", "master", "soaTest", jobConfig, baseFolder)
-    createJob("RestAssuredTest", "master", "restAssuredTest", jobConfig, baseFolder)
-    createJob("JmeterTest", "master", "jmeterTest", jobConfig, baseFolder)
 }
 
 /*
@@ -109,7 +111,7 @@ String template(jobConfig, jobType, fileName) {
     def templateConfig = jobConfig
 
     def ciPipelinetemplate = '''\
-        @Library("bork@master") _
+        @Library("devops-shared-lib@master") _
         
         ciPipelineJob {
           jobType = "$jobType"
