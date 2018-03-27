@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<parent>
-		<groupId>org.jenkins-ci.plugins</groupId>
-		<artifactId>plugin</artifactId>
-		<version>2.21</version>
-	</parent>
 
 	<groupId>com.zheng.devops.jenkins</groupId>
 	<artifactId>devops-seeder</artifactId>
@@ -28,17 +23,29 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jenkins-ci.main</groupId>
 			<artifactId>jenkins-test-harness</artifactId>
+			<version>2.15</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jenkins-ci.main</groupId>
 			<artifactId>jenkins-core</artifactId>
+			<version>${jenkins.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jenkins-ci.main</groupId>
+			<artifactId>jenkins-war</artifactId>
+			<version>${jenkins.version}</version>
+			<classifier>war-for-test</classifier>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -59,23 +66,23 @@
 			<version>2.6</version>
 		</dependency>
 
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-aggregator</artifactId>
-            <version>2.5</version>
-        </dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins.workflow</groupId>
+			<artifactId>workflow-aggregator</artifactId>
+			<version>2.5</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-cps-global-lib</artifactId>
-            <version>2.7</version>
-        </dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins.workflow</groupId>
+			<artifactId>workflow-cps-global-lib</artifactId>
+			<version>2.7</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-cps</artifactId>
-            <version>2.43</version>
-        </dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins.workflow</groupId>
+			<artifactId>workflow-cps</artifactId>
+			<version>2.43</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jenkins-ci.plugins</groupId>
@@ -95,17 +102,17 @@
 			<version>1.13</version>
 		</dependency>
 
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>junit</artifactId>
-            <version>1.24</version>
-        </dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>junit</artifactId>
+			<version>1.24</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>gradle</artifactId>
-            <version>1.28</version>
-        </dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>gradle</artifactId>
+			<version>1.28</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jenkins-ci.plugins</groupId>
@@ -143,9 +150,6 @@
 			<version>1.9</version>
 		</dependency>
 
-		<!--dependency> <groupId>org.jenkins-ci.plugins</groupId> <artifactId>groovy</artifactId> 
-			<version>2.0</version> </dependency -->
-
 		<dependency>
 			<groupId>org.jenkins-ci.plugins</groupId>
 			<artifactId>script-security</artifactId>
@@ -170,11 +174,11 @@
 			<version>2.1.0</version>
 		</dependency>
 
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>plain-credentials</artifactId>
-            <version>1.4</version>
-        </dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>plain-credentials</artifactId>
+			<version>1.4</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jenkins-ci.plugins</groupId>
@@ -187,9 +191,6 @@
 			<artifactId>git-client</artifactId>
 			<version>2.7.1</version>
 		</dependency>
-
-		<!--dependency> <groupId>org.jenkins-ci.plugins</groupId> <artifactId>git-server</artifactId> 
-			<version>1.7</version> </dependency -->
 
 		<dependency>
 			<groupId>org.jenkins-ci.plugins</groupId>
