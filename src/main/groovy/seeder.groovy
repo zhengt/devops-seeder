@@ -47,36 +47,38 @@ void createJobs(def baseFolder, def devBaseFolder, def jobConfig) {
     // create repo folder
     createFolder("${baseFolder}/${project}/${repositoryNameSlug}", jobConfig.repository)
 
-    createJob("API-Smoke-Test", "master", "apiSmokeTest", jobConfig, baseFolder)
-    createJob("API-Integration-Test", "master", "apiIntegrationTest", jobConfig, baseFolder)
-    createJob("API-Regression-Test", "master", "apiRegressionTest", jobConfig, baseFolder)
+    createJob("API Smoke Test", "master", "apiSmokeTest", jobConfig, baseFolder)
+    createJob("API Integration Test", "master", "apiIntegrationTest", jobConfig, baseFolder)
+    createJob("API Regression Test", "master", "apiRegressionTest", jobConfig, baseFolder)
 
-    createJob("Performance-Test", "master", "performanceTest", jobConfig, baseFolder)
+    createJob("Performance Test", "master", "performanceTest", jobConfig, baseFolder)
 
-    createJob("UI-Smoke-Test", "master", "uiSmokeTest", jobConfig, baseFolder)
-    createJob("UI-Integration-Test", "master", "uiIntegrationTest", jobConfig, baseFolder)
-    createJob("UI-Regression-Test", "master", "uiRegressionTest", jobConfig, baseFolder)
+    createJob("UI Smoke Test", "master", "uiSmokeTest", jobConfig, baseFolder)
+    createJob("UI Integration Test", "master", "uiIntegrationTest", jobConfig, baseFolder)
+    createJob("UI Regression Test", "master", "uiRegressionTest", jobConfig, baseFolder)
 
-    createJob("UnitTest", "master", "buildTest", jobConfig, baseFolder)
+    createJob("Unit Test", "master", "buildTest", jobConfig, baseFolder)
     createJob("Sonarqube", "master" ,"sonarqube", jobConfig, baseFolder)
     createJob("Veracode", "master" ,"veracode", jobConfig, baseFolder)
     createJob("SonatypeIQ", "master" ,"sonatypeIQ", jobConfig, baseFolder)
     createJob("PackageToNexus", "master", "publish", jobConfig, baseFolder)
 
-    createJob("UnitTestPR", "pr", "buildTest", jobConfig, baseFolder)
-    createJob("SonarqubePR", "pr", "sonarqube", jobConfig, baseFolder)
-    createJob("SonatypeIQPR", "pr", "sonatypeIQ", jobConfig, baseFolder)
+    createJob("Unit Test PR", "pr", "buildTest", jobConfig, baseFolder)
+    createJob("Sonarqube PR", "pr", "sonarqube", jobConfig, baseFolder)
+    createJob("SonatypeIQ PR", "pr", "sonatypeIQ", jobConfig, baseFolder)
 }
 
 /*
 * This is a generic function to create Jobs in Jenkins.
 */
-void createJob(jobName, jobType, fileName, jobConfig, folder) {
+void createJob(description, jobType, fileName, jobConfig, folder) {
     //make job name slug friendly :)
     def project = jobConfig.project
     def repositoryNameSlug = jobConfig.repository.trim().replaceAll(" ", "-").toLowerCase()
     jobConfig.jobType = fileName
+    def jobName = description.replaceAll(' ', '')
     pipelineJob("${folder}/${project}/${repositoryNameSlug}/${jobName}") {
+        it.description(description)
         logRotator {
             numToKeep(5)
         }
