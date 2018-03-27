@@ -51,7 +51,7 @@ void createJobs(def baseFolder, def devBaseFolder, def jobConfig) {
     createJob("API-Integration-Test", "master", "apiIntegrationTest", jobConfig, baseFolder)
     createJob("API-Regression-Test", "master", "apiRegressionTest", jobConfig, baseFolder)
 
-    createJob("Performance-Test", "master", "performanceTest", jobConfig, baseFolder)
+    createJob("Performance Test", "master", "performanceTest", jobConfig, baseFolder)
 
     createJob("UI-Smoke-Test", "master", "uiSmokeTest", jobConfig, baseFolder)
     createJob("UI-Integration-Test", "master", "uiIntegrationTest", jobConfig, baseFolder)
